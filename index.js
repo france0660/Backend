@@ -1,34 +1,22 @@
 const express = require('express');
+const route = express.Router();
 const app = express();
 
 const mysql = require('mysql');
 const cors = require('cors');
+const userRouter = require('./app/user/user-route');
 
 const PORT = process.env.PORT || 3001
 
+
 app.use(cors());
 app.use(express.json());
+app.use("/api", userRouter )
 
-const db = mysql.createConnection({
-   user :"sql6420380",
-   host :"sql6.freemysqlhosting.net",
-   password :"iHdXT98rcR",
-   database: "sql6420380",
-  insecureAuth : true
 
-},(err) =>{
-    console.log(err);
-})
+const connect = require('./databaseconnect')
+const db = connect.databaseconnect;
 
-app.get('/db',(req,res) => {
-    db.query("SELECT * FROM sql6420380.User",(err,result) => {
-        if(err){
-            console.log(err);
-        }else{
-            res.send(result);
-        }
-    })
-})
 
 app.get('/',(req,res) => {
     res.json({result :"ok",data :[1,2,3,4,4]})
