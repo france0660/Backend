@@ -19,6 +19,25 @@ exports.getListUser = async function(req, res) {
 };
 
 
+exports.createUser = async function(req, res) {
+    try {
+        console.log("body",req.body);
+        const { v4: uuidv4 } = require('uuid');
+        sql = `INSERT INTO sql6420380.User (User_Id, Password, User_Name)
+        VALUES ('${uuidv4() }', '${req.body.Password}', '${req.body.User_Name}');`;  
+        db.query(sql,(err,result) => {
+            if(err){
+                console.log(err);
+            }else{
+                res.send(result);
+            }
+        })
+    } catch (err) {
+        ret.matchError(err, res);
+    }
+};
+
+
 exports.logintUser = async function(req, res) {
     try {
         console.log(req.query);
