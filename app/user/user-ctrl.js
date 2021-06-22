@@ -5,7 +5,7 @@ const db = connect.databaseconnect;
 exports.getListUser = async function(req, res) {
     try {
         console.log(req.query);
-        sql = `SELECT * FROM sql6420380.User`;  
+        sql = `SELECT * FROM jjstore.user`;  
         db.query(sql,(err,result) => {
             if(err){
                 console.log(err);
@@ -23,8 +23,8 @@ exports.createUser = async function(req, res) {
     try {
         console.log("body",req.body);
         const { v4: uuidv4 } = require('uuid');
-        sql = `INSERT INTO sql6420380.User (User_Id, Password, User_Name)
-        VALUES ('${uuidv4() }', '${req.body.Password}', '${req.body.User_Name}');`;  
+        sql = `INSERT INTO jjstore.user (user_id,user_name,password)
+        VALUES ('${uuidv4() }', '${req.body.user_name}','${req.body.password}');`;  
         db.query(sql,(err,result) => {
             if(err){
                 console.log(err);
@@ -41,7 +41,7 @@ exports.createUser = async function(req, res) {
 exports.logintUser = async function(req, res) {
     try {
         console.log(req.query);
-        sql = `SELECT * FROM sql6420380.User where Password='${req.query.Password || null}' and User_Name='${req.query.User_Name || null}'`;  
+        sql = `SELECT * FROM jjstore.user where Password='${req.query.password || null}' and User_Name='${req.query.user_name || null}'`;  
         db.query(sql,(err,result) => {
             if(err){
                 console.log(err);
