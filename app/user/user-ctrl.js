@@ -22,9 +22,9 @@ exports.getListUser = async function(req, res) {
 exports.createUser = async function(req, res) {
     try {
         console.log("body",req.body);
-        const { v4: uuidv4 } = require('uuid');
+        // const { v4: uuidv4 } = require('uuid');
         sql = `INSERT INTO jjstore.user (user_id,user_name,password,first_name,last_name,nickname)
-        VALUES ('${uuidv4() }', '${req.body.user_name}','${req.body.password}','${req.body.firstname}','${req.body.lastname}','${req.body.nickname}');`;  
+        VALUES ('${req.body.user_id}', '${req.body.user_name}','${req.body.password}','${req.body.firstname}','${req.body.lastname}','${req.body.nickname}');`;  
         db.query(sql,(err,result) => {
             if(err){
                 console.log(err);
