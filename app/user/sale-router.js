@@ -2,11 +2,9 @@ const express = require('express');
 const route = express.Router();
 const cntr = require('./sale-ctrl')
 
-route.post('/saleProduct', cntr.saleProduct)
+route.post('/saleproduct', cntr.saleproduct)
 
-route.get('/getListsaleProduct', cntr.getListsaleProduct)
+route.get('/getListallproductforsale', cntr.getListallproductforsale)
 
-// route.get('/login', cntr.logintUser)
-
-// route.post('/createUser', cntr.createUser)
+route.get('/getListallproductforshow', cntr.getListallproductforshow)
 module.exports = route
