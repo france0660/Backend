@@ -55,14 +55,13 @@ exports.getListallproductforshow = async function(req, res) {
 exports.saleproduct = async function(req, res, next) {
  
     try {
-        const {listProductForsale,
-            getdetailbarcodeform}=req.body;
+        const {listProductForsale,getdetailbarcodeform}=req.body;
             console.log(getdetailbarcodeform);
         const _listProductForsale = listProductForsale || [];
         for (let i = 0; i < _listProductForsale.length; i++) {
             const e = _listProductForsale[i];
             console.log(e);
-            sql = `INSERT INTO jjstore.saleproduct (sale_id,sale_employee,sale_productname,sale_quantity,sale_price) VALUES (${e.sale_id||null},${getdetailbarcodeform.saleproduct_employee_id||null},'${e.product_name || null}',${e.product_quantity||null},${e.product_price||null})`;
+            sql = `INSERT INTO jjstore.saleproduct (sale_id,sale_employee,sale_productname,sale_quantity,sale_price,bill_id) VALUES (${e.sale_id||null},${getdetailbarcodeform.saleproduct_employee_id||null},'${e.product_name || null}',${e.product_quantity||null},${e.product_price||null},${getdetailbarcodeform.saleproduct_bill_id||null})`;
             const _r = await db.query(sql, {
                 // transaction: t
             });//จะเก้บค่าอะไรบ้าง ชื่อ จำนวน ราคา แล้วก็ชื่อครขาย
@@ -76,6 +75,8 @@ exports.saleproduct = async function(req, res, next) {
         next(e);
     }
 }
+
+
 
 
 
