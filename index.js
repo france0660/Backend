@@ -9,6 +9,7 @@ const allproductRouter = require('./app/user/allproduct-router');
 const barcodesRouter = require('./app/user/barcodes-router');
 const saleRouter = require('./app/user/sale-router');
 const billRouter = require('./app/user/bill-router');
+const salehistoryRouter = require('./app/user/salehistory-route');
 
 
 
@@ -22,6 +23,7 @@ app.use("/api", allproductRouter );
 app.use("/api", barcodesRouter );
 app.use("/api", saleRouter );
 app.use("/api", billRouter );
+app.use("/api", salehistoryRouter );
 
 
 
