@@ -6,9 +6,9 @@ route.post('/addproduct', cntr.addproduct)
 
 route.get('/getListallProduct', cntr.getListallProduct)
 
-// route.get('/getListcodesale', cntr.getListcodesale)
+route.get('/getProductforEdit', cntr.getProductforEdit)
 
 // route.get('/login', cntr.logintUser)
 
-// route.post('/createUser', cntr.createUser)
+route.post('/submitEditstockproduct', cntr.submitEditstockproduct)
 module.exports = route

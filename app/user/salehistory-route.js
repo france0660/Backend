@@ -4,7 +4,7 @@ const cntr = require('./salehistory-ctrl')
 
 route.get('/getProductshowinhistory', cntr.getProductshowinhistory)
 
-// route.get('/login', cntr.logintUser)
+route.get('/getHistorysaleforEdit', cntr.getHistorysaleforEdit)
 
-// route.post('/createUser', cntr.createUser)
+route.post('/submitEditHistorysale', cntr.submitEditHistorysale)
 module.exports = route
